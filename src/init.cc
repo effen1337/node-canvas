@@ -91,4 +91,8 @@ NAN_MODULE_INIT(init) {
 
 
 
-NAN_MODULE_WORKER_ENABLED(canvas, init);
+#if NODE_MAJOR_VERSION >= 10
+  NAN_MODULE_WORKER_ENABLED(canvas, init);
+#else
+NODE_MODULE_INIT(canvas, init);
+#endif
